@@ -1,0 +1,1201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nonprofit Playbook — AI + Leadership Education</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,700;12..96,800&family=Sora:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#07070f;--s1:#0f0f1e;--s2:#13132a;--border:#1e1e38;
+  --cyan:#22d3ee;--purple:#a78bfa;--green:#4ade80;--amber:#fbbf24;--red:#f87171;
+  --t1:#f1f5f9;--t2:#94a3b8;--t3:#475569;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--t1);font-family:'Sora',sans-serif;font-size:14px;line-height:1.75;display:flex;min-height:100vh}
+
+/* ── Sidebar ── */
+.sidebar{position:fixed;top:0;left:0;width:234px;height:100vh;background:var(--s1);border-right:1px solid var(--border);overflow-y:auto;padding:24px 0;z-index:100;scrollbar-width:thin;scrollbar-color:var(--border) transparent}
+.sidebar::-webkit-scrollbar{width:4px}
+.sidebar::-webkit-scrollbar-thumb{background:var(--border);border-radius:4px}
+.sidebar-logo{padding:0 20px 20px;border-bottom:1px solid var(--border);margin-bottom:12px}
+.sidebar-logo .label{font-family:'Bricolage Grotesque',sans-serif;font-size:15px;font-weight:800;color:var(--cyan)}
+.sidebar-logo .sub{font-size:11px;color:var(--t3);margin-top:3px}
+.nav-section{padding:10px 20px 4px;font-size:10px;font-weight:600;color:var(--t3);letter-spacing:1.5px;text-transform:uppercase}
+.sidebar a{display:block;padding:7px 20px;color:var(--t2);text-decoration:none;font-size:12px;font-weight:500;border-left:2px solid transparent;transition:all 0.15s}
+.sidebar a:hover,.sidebar a.active{color:var(--cyan);border-left-color:var(--cyan);background:rgba(34,211,238,0.05)}
+
+/* ── Main ── */
+.main{margin-left:234px;padding:52px 56px;max-width:980px;width:100%}
+.section{margin-bottom:72px}
+
+/* ── Tags ── */
+.tag{display:inline-block;padding:3px 10px;border-radius:4px;font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:14px}
+.tc{background:rgba(34,211,238,.15);color:var(--cyan)}
+.tp{background:rgba(167,139,250,.15);color:var(--purple)}
+.tg{background:rgba(74,222,128,.15);color:var(--green)}
+.ta{background:rgba(251,191,36,.15);color:var(--amber)}
+.tr{background:rgba(248,113,113,.15);color:var(--red)}
+
+/* ── Typography ── */
+h1{font-family:'Bricolage Grotesque',sans-serif;font-size:34px;font-weight:800;color:var(--t1);line-height:1.15;margin-bottom:10px}
+h2{font-family:'Bricolage Grotesque',sans-serif;font-size:20px;font-weight:700;color:var(--t1);margin:36px 0 14px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+h3{font-family:'Bricolage Grotesque',sans-serif;font-size:15px;font-weight:700;color:var(--cyan);margin:20px 0 8px}
+p{color:var(--t2);margin-bottom:12px}
+p strong{color:var(--t1)}
+ul,ol{color:var(--t2);padding-left:20px;margin-bottom:14px}
+li{margin-bottom:5px}
+li strong{color:var(--t1)}
+
+/* ── Hero ── */
+.hero{background:linear-gradient(135deg,rgba(34,211,238,.09),rgba(167,139,250,.07));border:1px solid var(--border);border-radius:14px;padding:36px;margin-bottom:52px}
+.hero h1{font-size:30px}
+.hero p{font-size:15px;margin-top:8px}
+.date-note{background:rgba(251,191,36,.09);border:1px solid rgba(251,191,36,.3);border-radius:7px;padding:11px 16px;font-size:12px;color:var(--amber);margin-top:18px}
+
+/* ── Cards ── */
+.card{background:var(--s1);border:1px solid var(--border);border-radius:10px;padding:20px 22px;margin-bottom:14px}
+.card h3{margin:0 0 8px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin:16px 0}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:20px 0}
+.bad{background:rgba(248,113,113,.05);border-color:rgba(248,113,113,.25)}
+.bad h3{color:var(--red)}
+.good{background:rgba(74,222,128,.05);border-color:rgba(74,222,128,.25)}
+.good h3{color:var(--green)}
+
+/* ── Honest box ── */
+.honest{background:rgba(251,191,36,.07);border:1px solid rgba(251,191,36,.25);border-radius:9px;padding:16px 20px;margin:18px 0}
+.honest .hl{font-size:10px;font-weight:600;color:var(--amber);letter-spacing:1px;text-transform:uppercase;margin-bottom:6px}
+
+/* ── Verdict ── */
+.verdict{background:rgba(74,222,128,.08);border:1px solid rgba(74,222,128,.28);border-radius:9px;padding:16px 20px;margin:16px 0}
+.verdict .vl{font-size:10px;font-weight:600;color:var(--green);letter-spacing:1px;text-transform:uppercase;margin-bottom:6px}
+
+/* ── Templates ── */
+.template{background:var(--s2);border:1px solid var(--border);border-radius:10px;padding:20px 22px;margin:18px 0;position:relative}
+.tpl-label{font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--purple);margin-bottom:14px}
+.template pre{white-space:pre-wrap;word-wrap:break-word;color:var(--t2);font-family:'Sora',sans-serif;font-size:12.5px;line-height:1.85}
+.copy-btn{position:absolute;top:16px;right:16px;background:rgba(167,139,250,.15);color:var(--purple);border:1px solid rgba(167,139,250,.3);border-radius:5px;padding:4px 12px;font-size:11px;cursor:pointer;font-family:'Sora',sans-serif;transition:.15s}
+.copy-btn:hover{background:rgba(167,139,250,.28)}
+
+/* ── Timeline ── */
+.week{display:grid;grid-template-columns:90px 1fr;gap:0}
+.week-num{padding:18px 16px 0 0;text-align:right}
+.wn{font-family:'Bricolage Grotesque',sans-serif;font-size:26px;font-weight:800;color:var(--border);line-height:1}
+.wl{font-size:10px;color:var(--t3);text-transform:uppercase;letter-spacing:1px;margin-top:3px}
+.week-line{border-left:2px solid var(--border);padding:0 0 28px 26px;position:relative}
+.week-line::before{content:'';position:absolute;left:-7px;top:22px;width:12px;height:12px;border-radius:50%;background:var(--border);border:2px solid var(--bg)}
+.week.hi .week-line{border-left-color:var(--cyan)}
+.week.hi .week-line::before{background:var(--cyan)}
+.week.hi .wn{color:var(--cyan)}
+.wc{background:var(--s1);border:1px solid var(--border);border-radius:9px;padding:16px 20px;margin:14px 0 0}
+.wc h3{color:var(--t1);margin:0 0 6px;font-size:14px}
+.wc .goal{font-size:11px;color:var(--cyan);font-weight:600;margin-bottom:10px;letter-spacing:.4px}
+.wc ul{margin:0;font-size:12.5px}
+.warn{font-size:12px;color:var(--red);margin-top:10px}
+.ok{font-size:12px;color:var(--green);margin-top:10px}
+.note{font-size:12px;color:var(--amber);margin-top:10px}
+
+/* ── Stats bar ── */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:22px 0}
+.stat{background:var(--s1);border:1px solid var(--border);border-radius:9px;padding:16px;text-align:center}
+.stat .sn{font-family:'Bricolage Grotesque',sans-serif;font-size:26px;font-weight:800;color:var(--cyan)}
+.stat .sl{font-size:11px;color:var(--t3);margin-top:3px}
+
+/* ── Slides ── */
+.slide{background:var(--s1);border:1px solid var(--border);border-radius:9px;padding:16px 20px;margin-bottom:10px;display:grid;grid-template-columns:46px 1fr;gap:16px;align-items:start}
+.snum{font-family:'Bricolage Grotesque',sans-serif;font-size:22px;font-weight:800;color:var(--border);line-height:1;padding-top:2px}
+.sc h3{color:var(--t1);font-size:14px;margin:0 0 5px}
+.sc p{font-size:12.5px;margin:0 0 8px}
+.script{background:rgba(167,139,250,.08);border-left:3px solid var(--purple);padding:9px 13px;font-size:12px;color:var(--t2);border-radius:0 5px 5px 0;font-style:italic;line-height:1.7}
+.act-badge{display:inline-block;padding:2px 8px;background:rgba(251,191,36,.15);color:var(--amber);border-radius:4px;font-size:10px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;margin-bottom:7px}
+
+/* ── TikTok cards ── */
+.tk{background:var(--s1);border:1px solid var(--border);border-radius:10px;padding:18px 20px;margin-bottom:12px}
+.tk .hook{font-family:'Bricolage Grotesque',sans-serif;font-size:16px;font-weight:700;color:var(--t1);margin-bottom:10px;line-height:1.3}
+.tk .hook::before{content:'🎬 HOOK: ';font-size:10px;font-weight:600;color:var(--cyan);letter-spacing:1px;display:block;margin-bottom:4px}
+.tkmeta{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}
+.tkmeta span{font-size:11px;padding:3px 9px;border-radius:4px}
+.tt{background:rgba(34,211,238,.1);color:var(--cyan)}
+.tf{background:rgba(167,139,250,.1);color:var(--purple)}
+.tg2{background:rgba(74,222,128,.1);color:var(--green)}
+
+/* ── Phases ── */
+.phase{background:var(--s1);border:1px solid var(--border);border-radius:9px;padding:20px 22px;display:grid;grid-template-columns:148px 1fr;gap:22px;margin-bottom:12px}
+.pt{font-family:'Bricolage Grotesque',sans-serif;font-size:14px;font-weight:700;color:var(--purple)}
+.pt small{display:block;color:var(--t3);font-size:11px;font-weight:400;margin-top:3px;font-family:'Sora',sans-serif}
+.pg{font-size:12px;color:var(--green);font-weight:600;margin-bottom:9px}
+
+/* ── Roles ── */
+.roles{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:18px 0}
+.role{background:var(--s1);border:1px solid var(--border);border-radius:10px;padding:20px}
+.role h3{margin:0 0 4px}
+.role .sub{font-size:11px;color:var(--t3);margin-bottom:12px}
+.role .not{font-size:12px;color:var(--t3);margin-top:12px;font-style:italic}
+
+/* ── Action blocks ── */
+.ab{background:var(--s2);border-left:3px solid var(--cyan);border-radius:0 9px 9px 0;padding:16px 22px;margin-bottom:14px}
+.ab h3{color:var(--cyan);font-size:13px;margin:0 0 10px}
+.ab .tl{font-size:10px;font-weight:600;color:var(--t3);letter-spacing:1px;text-transform:uppercase;margin-bottom:8px}
+.cl{list-style:none;padding:0}
+.cl li{display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-bottom:1px solid var(--border);color:var(--t2);font-size:12.5px}
+.cl li:last-child{border-bottom:none}
+.cb{width:17px;height:17px;border:2px solid var(--border);border-radius:4px;flex-shrink:0;margin-top:1px}
+.pri{font-size:10px;font-weight:600;letter-spacing:.4px;padding:2px 7px;border-radius:3px;flex-shrink:0;white-space:nowrap}
+.pc{background:rgba(248,113,113,.15);color:var(--red)}
+.ph{background:rgba(251,191,36,.15);color:var(--amber)}
+.pm{background:rgba(74,222,128,.15);color:var(--green)}
+
+/* ── Names ── */
+.name-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}
+.nc{background:var(--s1);border:1px solid var(--border);border-radius:9px;padding:18px;text-align:center}
+.nc.rec{border-color:var(--cyan);background:rgba(34,211,238,.05)}
+.nc .on{font-family:'Bricolage Grotesque',sans-serif;font-size:20px;font-weight:800;color:var(--t1);margin-bottom:5px}
+.nc.rec .on{color:var(--cyan)}
+.nc .tl2{font-size:11px;color:var(--t3);font-style:italic}
+.nc .info{font-size:11px;color:var(--t3);margin-top:8px}
+.rb{display:inline-block;background:var(--cyan);color:#000;font-size:9px;font-weight:700;padding:2px 7px;border-radius:3px;letter-spacing:1px;margin-bottom:7px}
+.divider{border:none;border-top:1px solid var(--border);margin:36px 0}
+
+@media(max-width:900px){
+  .sidebar{display:none}
+  .main{margin-left:0;padding:24px 20px}
+  .grid2,.roles,.phase,.grid3,.grid4,.stats,.name-grid{grid-template-columns:1fr}
+  .week{grid-template-columns:54px 1fr}
+  h1{font-size:26px}
+}
+</style>
+</head>
+<body>
+
+<nav class="sidebar">
+  <div class="sidebar-logo">
+    <div class="label">Nonprofit Playbook</div>
+    <div class="sub">AI + Leadership Education</div>
+  </div>
+  <div class="nav-section">Strategy</div>
+  <a href="#strategy">1 · Nonprofit Strategy</a>
+  <a href="#timeline">2 · Launch Timeline</a>
+  <div class="nav-section">Build</div>
+  <a href="#workshop">3 · First Workshop</a>
+  <a href="#outreach">4 · Outreach System</a>
+  <a href="#tiktok">5 · TikTok Growth</a>
+  <div class="nav-section">Systems</div>
+  <a href="#hours">6 · Volunteer Hours</a>
+  <a href="#legal">7 · Legal + Structure</a>
+  <a href="#scale">8 · Scale to 10K</a>
+  <a href="#cofounders">9 · Cofounder System</a>
+  <div class="nav-section">Start Now</div>
+  <a href="#action">10 · 48-Hour Plan</a>
+  <a href="#brand">✦ Brand + Web</a>
+</nav>
+
+<main class="main">
+
+<!-- HERO -->
+<div class="hero">
+  <div class="tag tc">Complete Founder Playbook — No Fluff</div>
+  <h1>Build a Real Nonprofit.<br>Not a Plan. Not a Concept.</h1>
+  <p>Everything you need to launch an AI + leadership education nonprofit — step by step, zero budget, built for high schoolers who are actually going to follow through.</p>
+  <div class="date-note">⚠️ <strong>Date note:</strong> Your prompt says "July 2025" — it's currently April 2026. This playbook targets <strong>July 2026</strong> as your launch milestone. You have ~12 weeks. That is enough time if you start this week, not next week.</div>
+</div>
+
+<!-- ═══ SECTION 1 ═══ -->
+<div class="section" id="strategy">
+  <div class="tag tc">Section 1</div>
+  <h1>Nonprofit Strategy</h1>
+
+  <div class="honest">
+    <div class="hl">🎯 Honest Target Audience Assessment</div>
+    <p><strong>Elementary (K–5): Not your primary target. Not yet.</strong> Attention spans are too short for meaningful AI instruction. You'll spend more time managing behavior than teaching. The curriculum has to be so simplified it barely conveys anything real. Schools also have higher friction for external programs with younger kids. Save elementary for Year 2, simplified format only.</p>
+    <p><strong>Middle school (6th–8th grade): This is your sweet spot.</strong> Old enough for critical thinking, young enough to be genuinely excited. They have social media, share content, influence their peers, and are at a formative age for building frameworks about technology. Start here. Build everything for this group first.</p>
+  </div>
+
+  <h2>Mission Statement</h2>
+  <div class="card">
+    <p style="font-size:16px;color:var(--t1);font-weight:500;font-style:italic;line-height:1.5">"We equip middle schoolers with AI literacy and leadership skills — taught by high school students who are figuring it out alongside them."</p>
+  </div>
+
+  <h2>What Makes You Different</h2>
+  <div class="grid2">
+    <div class="card">
+      <h3>You're teenagers</h3>
+      <p>This is your superpower, not a weakness. Middle schoolers listen to high schoolers in a completely different way than they listen to adults. You're close enough to be relatable and far enough to be aspirational. Don't hide this — lead with it in every pitch.</p>
+    </div>
+    <div class="card">
+      <h3>Practical, not theoretical</h3>
+      <p>Not "AI is the future." You teach how it actually works, where bias comes from, and how to think critically about technology they're already using every day. Students leave with real frameworks.</p>
+    </div>
+    <div class="card">
+      <h3>Leadership framing</h3>
+      <p>Most AI programs for kids teach coding. You teach leadership in an AI world — who shapes it, who gets left out, and how young people can have a voice. This is genuinely differentiated.</p>
+    </div>
+    <div class="card">
+      <h3>TikTok-first community</h3>
+      <p>You're building an audience that extends beyond any single workshop. Students who find you on TikTok keep learning. That's a compounding asset that workshop-only programs don't have.</p>
+    </div>
+  </div>
+
+  <h2>3 Program Models</h2>
+  <div class="card good">
+    <h3>Model 1: The School Workshop (Primary)</h3>
+    <p>60–90 minute in-school session. Free for the school. You bring everything. Target: 1–2 classrooms or an after-school program. This is your core product and social proof engine.</p>
+    <p><strong>Pros:</strong> Photos, credibility, scale, repeat bookings. <strong>Barrier:</strong> Requires principal buy-in, 2–4 week lead time.</p>
+  </div>
+  <div class="card">
+    <h3>Model 2: The Community Session (Launch with This First)</h3>
+    <p>90-minute event at a library, YMCA, or community center. Open to the public. Students sign up voluntarily. Much easier to book than schools — libraries almost always say yes. Use this to get your first event on the calendar.</p>
+    <p><strong>Pros:</strong> Lowest barrier, great for getting started. <strong>Cons:</strong> You promote it yourself, lower guaranteed attendance.</p>
+  </div>
+  <div class="card">
+    <h3>Model 3: The Online Workshop (Scale Later)</h3>
+    <p>60-minute Zoom session. Recruit from TikTok. Can reach students nationally. Run with 10–100 students. Free to operate, easy to record for social content.</p>
+    <p><strong>Pros:</strong> National reach, scales fast, low cost. <strong>Cons:</strong> Less engaging than in-person, harder to photograph.</p>
+  </div>
+
+  <div class="honest">
+    <div class="hl">💡 Recommended Launch Order</div>
+    <p>Start with <strong>Model 2 (library)</strong> to lock your first confirmed date fast. Use those photos to pitch schools. Then add online workshops to scale. Don't try to run all three at once in the first 60 days.</p>
+  </div>
+
+  <h2>Value Proposition for Schools</h2>
+  <p>Lead with these exact points — in this order:</p>
+  <ul>
+    <li><strong>100% free</strong> — no budget impact, no strings</li>
+    <li><strong>Turnkey</strong> — you handle facilitation, materials, activities. Zero prep required from the teacher.</li>
+    <li><strong>Student-led</strong> — kids engage differently with near-peers than adults</li>
+    <li><strong>Digital literacy aligned</strong> — supports California's CA NGSS and digital literacy standards</li>
+    <li><strong>One session, real impact</strong> — 75 minutes, measurable learning outcomes</li>
+  </ul>
+</div>
+
+<!-- ═══ SECTION 2 ═══ -->
+<div class="section" id="timeline">
+  <div class="tag ta">Section 2 — Most Important</div>
+  <h1>April → July 2026<br>Week-by-Week Launch Plan</h1>
+  <p>12 weeks. Every week has one or two non-negotiables. If you miss a week, the math gets harder but not impossible. Start this week.</p>
+
+  <div class="week hi">
+    <div class="week-num"><div class="wn">1</div><div class="wl">Apr 27–May 3</div></div>
+    <div class="week-line"><div class="wc">
+      <div class="goal">FOUNDATION — If you do nothing else this week, do these</div>
+      <h3>Non-negotiables:</h3>
+      <ul>
+        <li>Create shared org Gmail (e.g. sparkailearn@gmail.com)</li>
+        <li>Set up shared Google Drive (4 folders: Outreach / Workshop / Finance / Media)</li>
+        <li>Create Notion workspace (free) — your project management hub</li>
+        <li>Claim TikTok + Instagram @[orgname] before someone else does</li>
+        <li>Text or email 3 potential adult advisors TODAY using the script in Section 7</li>
+        <li>Build outreach list: find 20 middle school principal emails + 10 library contacts</li>
+      </ul>
+      <p class="warn">❌ Do NOT: design a logo, apply for 501(c)(3), build a website, buy anything</p>
+    </div></div>
+  </div>
+
+  <div class="week hi">
+    <div class="week-num"><div class="wn">2</div><div class="wl">May 4–10</div></div>
+    <div class="week-line"><div class="wc">
+      <div class="goal">BUILD YOUR TOOLKIT — Look credible before you reach out</div>
+      <h3>This week:</h3>
+      <ul>
+        <li>Design Canva one-pager (1 page: who you are, what the workshop is, why it's free)</li>
+        <li><strong>Apply to Hack Club Bank</strong> (hcb.hackclub.com/apply) — your legal home base, free, takes 2–4 weeks</li>
+        <li>Film and post TikTok #1: introduce yourselves and your mission, raw is fine</li>
+        <li>Confirm adult advisor — follow up if you haven't heard back</li>
+        <li>Start workshop slides in Google Slides (just build the skeleton — 12 slides, no content yet)</li>
+      </ul>
+    </div></div>
+  </div>
+
+  <div class="week hi">
+    <div class="week-num"><div class="wn">3</div><div class="wl">May 11–17</div></div>
+    <div class="week-line"><div class="wc">
+      <div class="goal">FIRST OUTREACH WAVE — Start the clock on getting a yes</div>
+      <h3>This week:</h3>
+      <ul>
+        <li>Send outreach emails to 15 schools + 8 libraries (attach one-pager)</li>
+        <li>Post 2–3 TikToks (use scripts from Section 5)</li>
+        <li>Workshop slides should be ~50% complete with real content</li>
+        <li>Film "behind the scenes of building this" TikTok</li>
+      </ul>
+    </div></div>
+  </div>
+
+  <div class="week">
+    <div class="week-num"><div class="wn">4</div><div class="wl">May 18–24</div></div>
+    <div class="week-line"><div class="wc">
+      <div class="goal">FOLLOW-UP + CONTENT — Don't let leads go cold</div>
+      <h3>This week:</h3>
+      <ul>
+        <li>Follow up on every Week 3 email (7–10 days is the right window)</li>
+        <li>Send 10 more outreach emails to fresh contacts</li>
+        <li>Post 3 TikToks</li>
+        <li>Finalize workshop slide deck — it should be presentation-ready by end of week</li>
+        <li>Create permission slip template (see Section 3)</li>
+      </ul>
+    </div></div>
+  </div>
+
+  <div class="week hi">
+    <div class="week-num"><div class="wn">5</div><div class="wl">May 25–31</div></div>
+    <div class="week-line"><div class="wc">
+      <div class="goal">LOCK A DATE — Most important milestone of the launch phase</div>
+      <h3>Goal: At least 1 confirmed workshop date by end of this week.</h3>
+      <ul>
+        <li>Follow up on ALL previous emails — every unanswered message gets a follow-up</li>
+        <li>If zero responses from schools: immediately pivot outreach to libraries. The barrier is much lower.</li>
+        <li>Do a full dry run of your workshop — film it on your phone even if it's just the two of you</li>
+        <li>Post dry run clips on TikTok: "We're getting ready for our first workshop"</li>
+      </ul>
+      <p class="note">⚠️ If zero responses after 25+ emails: your subject line or first paragraph is the problem. Revise and test. "Free AI Workshop" in the subject underperforms "Free 75-Minute AI Program for [School Name] Students."</p>
+    </div></div>
+  </div>
+
+  <div class="week">
+    <div class="week-num"><div class="wn">6</div><div class="wl">Jun 1–7</div></div>
+    <div class="week-line"><div class="wc">
+      <div class="goal">PREPARE TO EXECUTE</div>
+      <h3>Your first workshop date should be confirmed this week. Now prepare:</h3>
+      <ul>
+        <li>Finalize all materials (print quiz cards, buy post-its)</li>
+        <li>Send permission slips to organizer if in-school</li>
+        <li>Recruit 1–2 volunteer helpers from your school for day-of</li>
+        <li>Assign photographer role — NOT one of the two facilitators</li>
+        <li>Set up Linktree with booking link (Calendly free tier) and social handles</li>
+        <li>Continue TikTok: 3x this week</li>
+      </ul>
+    </div></div>
+  </div>
+
+  <div class="week hi">
+    <div class="week-num"><div class="wn">7</div><div class="wl">Jun 8–14</div></div>
+    <div class="week-line"><div class="wc">
+      <div class="goal">🎉 RUN YOUR FIRST WORKSHOP — The most important day of your launch</div>
+      <h3>Day-of execution:</h3>
+      <ul>
+        <li>Arrive 15 minutes early. Set up slides, test projector, arrange room.</li>
+        <li>Designated photographer captures everything: student reactions, activities, the full-room shot</li>
+        <li>Record short clips throughout — quiz activity reactions are gold</li>
+        <li>Count participants. Write it down.</li>
+        <li>After the session: ask organizer for a 1–2 sentence testimonial quote</li>
+        <li>Log volunteer hours for everyone who showed up</li>
+        <li>Send thank-you email that same evening — no exceptions</li>
+      </ul>
+      <p class="ok">✅ After this you are a real organization with real documented impact. Everything from here is momentum.</p>
+    </div></div>
+  </div>
+
+  <div class="week">
+    <div class="week-num"><div class="wn">8–10</div><div class="wl">Jun 15–Jul 6</div></div>
+    <div class="week-line"><div class="wc">
+      <div class="goal">MOMENTUM — Use your first workshop to unlock more</div>
+      <h3>Three-week sprint:</h3>
+      <ul>
+        <li>Post 3–5 workshop clips on TikTok over this period — this is your strongest content</li>
+        <li>Book 2nd and 3rd workshops — use photos and testimonial from first as social proof</li>
+        <li>Write a 1-page impact report ("X students, Y sessions, Z testimonials")</li>
+        <li>Set up Calendly for direct school booking (free tier)</li>
+        <li>Recruit your first 3–5 consistent volunteers</li>
+        <li>Hack Club Bank should be approved — start using their documentation</li>
+      </ul>
+    </div></div>
+  </div>
+
+  <div class="week">
+    <div class="week-num"><div class="wn">11–12</div><div class="wl">Jul 7–31</div></div>
+    <div class="week-line"><div class="wc">
+      <div class="goal">LAUNCH COMPLETE — Set up for fall scale</div>
+      <h3>End-of-July targets:</h3>
+      <ul>
+        <li>3+ workshops completed or booked (non-negotiable for calling this a launch)</li>
+        <li>50+ students reached</li>
+        <li>100+ TikTok followers</li>
+        <li>Hack Club Bank approved and active</li>
+        <li>Adult advisor formally confirmed and on file</li>
+        <li>Fall workshop calendar blocked (Sept–Dec) with school targets identified</li>
+      </ul>
+    </div></div>
+  </div>
+</div>
+
+<!-- ═══ SECTION 3 ═══ -->
+<div class="section" id="workshop">
+  <div class="tag tp">Section 3</div>
+  <h1>First Workshop:<br>Complete Build</h1>
+
+  <div class="card">
+    <h3 style="color:var(--t1);font-size:18px;margin:0 0 8px">🎓 "AI or Human? Understanding the Technology Shaping Your Future"</h3>
+    <p style="margin:0">Duration: <strong>75 minutes</strong> · Ages: <strong>11–14 (6th–8th grade)</strong> · Max: <strong>30 students</strong> · 3 hands-on activities · No lecture stretch over 8 minutes</p>
+  </div>
+
+  <h2>Materials Needed</h2>
+  <div class="grid2">
+    <div class="card">
+      <h3>Free (you already have this)</h3>
+      <ul>
+        <li>Google Slides deck (you build this)</li>
+        <li>Laptop from school or yours</li>
+        <li>Projector (school or library provides)</li>
+        <li>Printed "AI or Human?" quiz cards — B&W, 1 per student</li>
+        <li>Pens or pencils</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>~$5 total (buy once, reuse)</h3>
+      <ul>
+        <li>1 pack Post-it notes (~$3 at Dollar Tree)</li>
+        <li>Markers for group activities</li>
+        <li>Optional: small bag of candy for quiz winners (~$2)</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>Slide-by-Slide Outline + Full Script</h2>
+
+  <div class="slide">
+    <div class="snum">1</div>
+    <div class="sc">
+      <h3>Title Slide</h3>
+      <p>"AI or Human? Understanding the Technology Shaping Your Future" · [Org Name] · [Date]</p>
+      <div class="script">"Hey everyone — I'm [Name] and this is [Cofounder]. We're high school students from [school]. We built this program because nobody taught US about AI when we were your age. Today you're going to learn things your teachers might not know yet. Let's get into it."</div>
+    </div>
+  </div>
+
+  <div class="slide">
+    <div class="snum">2</div>
+    <div class="sc">
+      <h3>Quick Poll — Show of Hands</h3>
+      <p>Who has used ChatGPT? · Who uses Netflix, Spotify, or YouTube recommendations? · Who thinks AI will affect their future career?</p>
+      <div class="script">"Look around the room. Almost everyone raised their hand for Netflix. That IS AI. You're already living inside an AI world — and today we're going to understand how it actually works."</div>
+    </div>
+  </div>
+
+  <div class="slide">
+    <div class="snum">3</div>
+    <div class="sc">
+      <h3>What Is AI? Three points.</h3>
+      <p>1) Software that learns from data and makes decisions · 2) Not magic — it's math · 3) Made by people, which means people's choices shape it</p>
+      <div class="script">"Forget sci-fi robots. AI is software that gets better at a task the more data it gets. Netflix watches what you watch, how long, what you skip — and uses that to predict what you'll like next. That's it. No magic. Just patterns in data."</div>
+    </div>
+  </div>
+
+  <div class="slide">
+    <div class="snum">4</div>
+    <div class="sc">
+      <h3>AI Is Already Everywhere (Interactive)</h3>
+      <p>Show images: TikTok FYP · Google autocomplete · Siri · spam filters · face unlock · Grammarly. Ask students: "Which uses AI?"</p>
+      <div class="script">"Tell me — which of these uses AI? [Take answers.] ALL of them. Every single one. You are already inside an AI world, every single day, whether you know it or not."</div>
+    </div>
+  </div>
+
+  <div class="slide">
+    <div class="snum">5</div>
+    <div class="sc">
+      <div class="act-badge">🎯 Activity 1 — 10 minutes</div>
+      <h3>AI or Human? Quiz</h3>
+      <p>Distribute printed quiz cards. Show 8 examples: an essay, a poem, a painting, a song recommendation, a translation, a legal brief summary, a news article, a drawing. Students write A (AI) or H (Human). Reveal answers. Award candy to top scorers.</p>
+      <div class="script">"I'm going to show you 8 things. On your card, write AI or Human for each one. No Googling — trust your gut. After all 8, we'll reveal." [After reveal:] "What surprised you most? The AI ones are getting harder to spot. That's exactly why we need to understand this."</div>
+    </div>
+  </div>
+
+  <div class="slide">
+    <div class="snum">6</div>
+    <div class="sc">
+      <h3>How Does AI Actually Learn?</h3>
+      <p>Simple visual on slide: Data → Algorithm → Output → Feedback → Better Output. Compare to learning a video game.</p>
+      <div class="script">"AI learns the same way you learn to play a video game. First time: you're bad. You fail. You learn what works. AI does the same — except it can fail and learn millions of times in seconds, using more data than any human could read in a lifetime."</div>
+    </div>
+  </div>
+
+  <div class="slide">
+    <div class="snum">7</div>
+    <div class="sc">
+      <h3>AI Can Be Biased — And Here's Why That Matters</h3>
+      <p>AI learns from human data → human data has human biases → real examples: facial recognition that works worse on darker skin tones, hiring AIs that penalize women's resumes, content algorithms that push extreme content for engagement.</p>
+      <div class="script">"Here's the part nobody tells you. If you train an AI on biased data, you get a biased AI. And biased AI makes real decisions — who gets hired, who gets a loan, who gets flagged by security software. These are not hypotheticals. They already happened."</div>
+    </div>
+  </div>
+
+  <div class="slide">
+    <div class="snum">8</div>
+    <div class="sc">
+      <div class="act-badge">🎯 Activity 2 — 10 minutes</div>
+      <h3>Bias Spotting</h3>
+      <p>Groups of 3. Printed scenario cards. Scenario 1: Hiring AI trained on 10 years of resumes when tech was 80% male. Scenario 2: Medical AI trained primarily on data from white patients. Scenario 3: Content algorithm that maximizes watch time by showing increasingly extreme content. Each group answers: What's the bias? Who's hurt? What would you change?</p>
+      <div class="script">"Groups of 3. Here's your scenario card. Answer three questions: What's the bias? Who does it hurt? What would you change to fix it? Five minutes — then we share." [Debrief: pull out the strongest idea from each group aloud.]</div>
+    </div>
+  </div>
+
+  <div class="slide">
+    <div class="snum">9</div>
+    <div class="sc">
+      <h3>Leadership + AI</h3>
+      <p>"AI doesn't lead. Humans do." — The people who understand AI will shape it. You don't need to code. You need to ask the right questions about who benefits, who's harmed, and who decides.</p>
+      <div class="script">"You don't need to know how to code to be an AI leader. But you DO need to understand AI well enough to challenge the people making decisions about it — in government, in companies, in schools. That's leadership. And it could be you."</div>
+    </div>
+  </div>
+
+  <div class="slide">
+    <div class="snum">10</div>
+    <div class="sc">
+      <div class="act-badge">🎯 Activity 3 — 12 minutes</div>
+      <h3>Design Your AI</h3>
+      <p>Each student gets a Post-it. Three questions: 1) What problem in your school or community would you want AI to solve? 2) What data would it need to learn? 3) What could go wrong? Share 4–5 ideas aloud with the room.</p>
+      <div class="script">"Now YOU think like an AI designer. 5 minutes — answer those 3 questions on your post-it. Then we'll share." [After sharing:] "These are real product ideas. Some of the most important AI tools of the next 10 years will come from people exactly like you."</div>
+    </div>
+  </div>
+
+  <div class="slide">
+    <div class="snum">11</div>
+    <div class="sc">
+      <h3>What's Next + How to Stay Connected</h3>
+      <p>Follow on TikTok. Join interest list. Tell your teacher you want more. Share with one person who wasn't here.</p>
+      <div class="script">"You now know more about AI than most adults. That's not an exaggeration. The question is: what are you going to do with it? Follow us — we post AI tips, workshop highlights, and things schools aren't teaching you yet. Be the person in your friend group who actually understands this stuff."</div>
+    </div>
+  </div>
+
+  <div class="slide">
+    <div class="snum">12</div>
+    <div class="sc">
+      <h3>Q&A + Group Photo</h3>
+      <p>5–10 min for questions. Group photo at the end (with consent). Collect post-its for your content and records.</p>
+      <div class="script">"Any questions? Anything you want to go deeper on? [Take 5–6 questions, keep energy up.] This was incredible — thank you for being so engaged. We're going to take a group photo to mark that you were part of our first ever [Org Name] workshop."</div>
+    </div>
+  </div>
+
+  <h2>Permission Slip Template</h2>
+  <div class="template">
+    <div class="tpl-label">📄 Permission Slip</div>
+    <button class="copy-btn" onclick="copyTpl(this)">Copy</button>
+    <pre>
+[ORG NAME] — AI Literacy Workshop
+Date: _______________     Location: _______________
+
+Dear Parent or Guardian,
+
+Your child is invited to participate in a free, student-led AI literacy workshop offered by [Org Name]. The workshop "AI or Human?" is a 75-minute interactive session covering how AI works, why it can be biased, and how students can think critically about the technology shaping their future.
+
+Led by high school students. 100% free. No devices or materials required from students.
+
+We may take photos or short video clips during the session for educational and promotional use (our website, social media, grant applications). Please indicate your preference below.
+
+Student Name: _______________________________    Grade: _______
+
+□ Yes, my child may participate in the workshop.
+□ Yes, my child's photo/video may be used by [Org Name].
+□ No photos or video of my child please.
+
+Parent/Guardian Signature: ___________________    Date: ________
+Contact Email (optional): ___________________________
+
+Questions? Contact us: [email] | [website]
+[Org Name] is a student-led nonprofit. Adult Advisor: [Name, Title, Contact]
+    </pre>
+  </div>
+
+  <h2>How to Make It Photo-Ready</h2>
+  <ul>
+    <li><strong>Assign a dedicated photographer</strong> — never one of the two facilitators</li>
+    <li><strong>Best shots:</strong> students raising hands, group activity, post-it wall, you presenting to a full room, the group photo</li>
+    <li><strong>Film a 15-second clip of the quiz</strong> — student reactions to reveals are gold for TikTok</li>
+    <li><strong>Natural light &gt; flash</strong> if at all possible. Position students near windows.</li>
+    <li><strong>Get the testimonial quote</strong> from the organizer that same day — after a week they'll forget the details</li>
+    <li><strong>Collect post-its</strong> — anonymized student responses are great for future TikTok content</li>
+  </ul>
+</div>
+
+<!-- ═══ SECTION 4 ═══ -->
+<div class="section" id="outreach">
+  <div class="tag tc">Section 4 — Critical</div>
+  <h1>Outreach System</h1>
+
+  <h2>Where to Find Contacts</h2>
+  <ul>
+    <li><strong>School principals:</strong> school website → "Contact Us" or "Administration" page. Or Google: "[city] middle school principal email"</li>
+    <li><strong>Libraries:</strong> library website → "Youth Services" or "Programs" department contact</li>
+    <li><strong>Community centers / YMCAs:</strong> Google "[city] youth programs community center" → find program coordinator</li>
+    <li><strong>School district websites:</strong> often publish administrator directories — one email to an assistant superintendent can reach multiple principals at once</li>
+    <li><strong>Teachers:</strong> search on LinkedIn for "[city] middle school teacher" or find them through TikTok's educator community</li>
+  </ul>
+
+  <h2>Volume + Realistic Conversion</h2>
+  <div class="stats">
+    <div class="stat"><div class="sn">50</div><div class="sl">Emails to send in Month 1</div></div>
+    <div class="stat"><div class="sn">5–8%</div><div class="sl">Cold email response rate</div></div>
+    <div class="stat"><div class="sn">3–5</div><div class="sl">Responses expected</div></div>
+    <div class="stat"><div class="sn">2–3</div><div class="sl">Confirmed workshops</div></div>
+  </div>
+  <p>The "yes" almost always comes from the follow-up, not the first email. Plan to follow up every single contact once. Contacts who opened your email but didn't respond are warm leads — call or DM if you can.</p>
+
+  <div class="template">
+    <div class="tpl-label">📧 Email to Principals</div>
+    <button class="copy-btn" onclick="copyTpl(this)">Copy</button>
+    <pre>Subject: Free AI Literacy Workshop for [School Name] Students — No Cost, Turnkey
+
+Hi [Principal Name],
+
+My name is [Your Name], and I'm a [grade] student at [Your School]. I'm the co-founder of [Org Name], a student-led nonprofit that teaches middle schoolers about AI literacy and leadership.
+
+We offer a free, 75-minute workshop called "AI or Human?" covering how AI works, where bias comes from in AI systems, and how students can become AI-literate leaders — taught by high school students, which students respond to very differently than adult instruction.
+
+What we bring to your school:
+• 100% free — no budget impact
+• We handle facilitation, materials, and activities — zero prep from teachers
+• Three hands-on activities (not a lecture)
+• Students leave with real frameworks, not just vocabulary
+• Aligned with digital literacy standards
+
+We're booking workshops for [month/month] and have a few open dates. Would a quick email exchange to pick a date work? It usually only takes 2–3 messages.
+
+I've attached our one-pager with more details.
+
+Thank you for your time,
+[Your Name]
+Co-Founder, [Org Name]
+[email] | @[TikTok handle] | [website/Linktree]</pre>
+  </div>
+
+  <div class="template">
+    <div class="tpl-label">📧 Email to Libraries / Community Centers</div>
+    <button class="copy-btn" onclick="copyTpl(this)">Copy</button>
+    <pre>Subject: Free Youth AI Workshop — Partnership Proposal for [Library Name]
+
+Hi [Name],
+
+I'm [Your Name], co-founder of [Org Name], a student-led nonprofit in [city] that teaches young people about AI literacy and leadership.
+
+We'd love to partner with [Library Name] to host a free public workshop for middle schoolers (ages 11–14). The session — "AI or Human?" — is a 75-minute interactive program where students learn how AI works, why it can be biased, and how to think critically about technology they use every day.
+
+We handle everything: facilitation, printed materials, and activities. We just need a space and help spreading the word to your youth community. We'll cross-promote on our TikTok and social channels.
+
+This checks several boxes for libraries: free, STEM-adjacent, youth-focused, community-driven, and student-led.
+
+Is there a program coordinator we could talk to about scheduling this in [month]?
+
+Thank you,
+[Your Name]
+[Org Name] | [email] | [Linktree]</pre>
+  </div>
+
+  <div class="template">
+    <div class="tpl-label">📧 Follow-Up Email (send 7–10 days after first email)</div>
+    <button class="copy-btn" onclick="copyTpl(this)">Copy</button>
+    <pre>Subject: Re: Free AI Workshop for [School/Library Name]
+
+Hi [Name],
+
+Following up on my email from [date] about our free AI literacy workshop for middle schoolers.
+
+I know inboxes get full. We still have open dates in [month] and booking usually only takes a couple of emails back and forth.
+
+Would [Date Option 1] or [Date Option 2] work? Happy to adjust to whatever fits your schedule.
+
+Thanks,
+[Your Name]
+[Org Name]</pre>
+  </div>
+
+  <div class="template">
+    <div class="tpl-label">💬 DM Script — Instagram / TikTok</div>
+    <button class="copy-btn" onclick="copyTpl(this)">Copy</button>
+    <pre>Hi! Saw you [work at / teach at / run programs at] [school/org] in [area]. I'm co-founding a nonprofit that teaches middle schoolers about AI literacy — and we do FREE workshops. Would love to connect about bringing it to your school or program. Is there a better way to reach you or someone in programming?</pre>
+  </div>
+
+  <h2>Conversion Strategy</h2>
+  <ul>
+    <li><strong>Always attach the one-pager PDF</strong> — it answers their questions before they ask and signals you're professional</li>
+    <li><strong>Offer specific dates</strong> in every follow-up — "Would June 12 or June 18 work?" converts far better than "let me know when you're free"</li>
+    <li><strong>Make the first ask tiny</strong> — "just a quick email exchange" removes friction better than "can we schedule a call"</li>
+    <li><strong>Lead with "free" in the subject line</strong> — principals are targeted by vendors constantly. Being free and student-led cuts through that</li>
+    <li><strong>Keep the email short</strong> — principals read on their phones. If it's longer than 150 words, you'll lose them. The template above is calibrated for this.</li>
+  </ul>
+</div>
+
+<!-- ═══ SECTION 5 ═══ -->
+<div class="section" id="tiktok">
+  <div class="tag tg">Section 5</div>
+  <h1>TikTok Growth Plan</h1>
+
+  <div class="honest">
+    <div class="hl">💡 What actually goes viral in this niche</div>
+    <p><strong>Educational + behind-the-scenes beats polished production every time.</strong> "Teenager starts nonprofit" is a compelling story. Film raw, film real. The content that performs best: surprising facts stated simply, "we did X and here's what happened" reaction videos, and confident opinions. You don't need editing skills. You need a hook in the first 2 seconds.</p>
+  </div>
+
+  <h2>Weekly System</h2>
+  <ul>
+    <li><strong>Post 3x per week minimum</strong> — Mon, Wed, Fri or Tue, Thu, Sat</li>
+    <li>Always caption your videos — improves accessibility and reach</li>
+    <li>Reply to every comment in the first hour — the algorithm rewards this</li>
+    <li>Use 3–5 tight hashtags, not 20: #AIeducation #youthleadership #learnontiktok #AIliteracy #teenstartup</li>
+    <li>Pin your best-performing video at all times</li>
+    <li>After your first workshop: release clips spread across 2–3 weeks, not all at once</li>
+  </ul>
+
+  <h2>10 Ready-to-Film Scripts</h2>
+
+  <div class="tk">
+    <div class="hook">Your school uses AI and nobody told you.</div>
+    <p>Quick examples: Grammarly checks their essays, YouTube recommends what they watch, cafeteria scheduling software, attendance tracking. Every one = AI. End: "You're already in an AI world. We're just here to help you understand it."</p>
+    <div class="tkmeta"><span class="tt">30–40 sec</span><span class="tf">Talking head + text overlay</span><span class="tg2">Brand awareness · First video to post</span></div>
+  </div>
+
+  <div class="tk">
+    <div class="hook">3 things AI is actually terrible at.</div>
+    <p>1) Creative originality (it remixes, doesn't create), 2) Emotional intelligence in real context, 3) Ethical judgment. End: "These aren't just soft skills — they're your competitive advantage in an AI world." CTA: "What would you add? Drop it below."</p>
+    <div class="tkmeta"><span class="tt">30 sec</span><span class="tf">Text on screen + voiceover</span><span class="tg2">Saves + shares</span></div>
+  </div>
+
+  <div class="tk">
+    <div class="hook">We just taught 30 middle schoolers about AI. Here's what happened.</div>
+    <p>Short clips from workshop (permission obtained): intro energy, quiz reveal reactions, post-it activity, group photo. Funniest or most surprising student moments. End: "We do this for free. Schools — DM us to book."</p>
+    <div class="tkmeta"><span class="tt">45–60 sec</span><span class="tf">Compilation</span><span class="tg2">Credibility + school leads · Post after first workshop</span></div>
+  </div>
+
+  <div class="tk">
+    <div class="hook">Stop using ChatGPT wrong for studying.</div>
+    <p>3 techniques: 1) Use it to quiz you — not write your essay, 2) Ask it to explain a concept 5 different ways until one clicks, 3) Tell it your wrong answer and ask why it's wrong. CTA: "Save this for your next test."</p>
+    <div class="tkmeta"><span class="tt">40 sec</span><span class="tf">Talking head or screen share</span><span class="tg2">Saves · Algorithm gold</span></div>
+  </div>
+
+  <div class="tk">
+    <div class="hook">AI vs 7th grader: who wins?</div>
+    <p>Same 5 tasks: write a joke about their specific school, explain a favorite childhood memory, solve an ambiguous word problem, translate 2026 slang, draw a cartoon. Results: split. End: "The human tasks are the ones that actually matter."</p>
+    <div class="tkmeta"><span class="tt">60 sec</span><span class="tf">Split screen or cuts</span><span class="tg2">Comments + shares</span></div>
+  </div>
+
+  <div class="tk">
+    <div class="hook">Your school probably isn't teaching you about AI. Here's exactly why.</div>
+    <p>Curriculum takes 5+ years to change. Teachers aren't trained. Textbooks are outdated before printed. Meanwhile AI changes monthly. "That gap is why we built [Org Name]." CTA: Follow to stay ahead.</p>
+    <div class="tkmeta"><span class="tt">40 sec</span><span class="tf">Talking head</span><span class="tg2">Brand story · Strong second or third video</span></div>
+  </div>
+
+  <div class="tk">
+    <div class="hook">POV: you're in our free AI workshop.</div>
+    <p>First-person style: "you walk in," intro energy, the quiz reveal, group activity, "aha" moment, group photo. End: "DM us if you want us to bring this to your school."</p>
+    <div class="tkmeta"><span class="tt">60 sec</span><span class="tf">POV immersive</span><span class="tg2">School leads + watch time</span></div>
+  </div>
+
+  <div class="tk">
+    <div class="hook">5 AI words that'll make you sound smarter than your teacher.</div>
+    <p>Reveal one at a time: Algorithm · Training data · Bias · Prompt engineering · Hallucination — each with a 1-sentence plain-English definition. CTA: "Which one surprised you? Comment below."</p>
+    <div class="tkmeta"><span class="tt">45 sec</span><span class="tf">Text reveal + voiceover</span><span class="tg2">Saves · Educational hits</span></div>
+  </div>
+
+  <div class="tk">
+    <div class="hook">I asked 30 middle schoolers what they'd use AI for. Their answers wrecked me.</div>
+    <p>Read 5 anonymized post-it responses from your workshop — mix of funny, creative, and surprisingly thoughtful. End: "Kids are going to run the world. We're just here to help them do it right."</p>
+    <div class="tkmeta"><span class="tt">45 sec</span><span class="tf">Talking head reading</span><span class="tg2">Emotional · Shares + follows</span></div>
+  </div>
+
+  <div class="tk">
+    <div class="hook">You don't need to learn to code to be ready for an AI future.</div>
+    <p>3 things that matter more: 1) Write good prompts, 2) Know what AI can't do, 3) Ask hard questions when AI is used to make decisions about you. "That's leadership. You can start today." CTA: Follow for more.</p>
+    <div class="tkmeta"><span class="tt">30 sec</span><span class="tf">Talking head</span><span class="tg2">Mission + new followers</span></div>
+  </div>
+</div>
+
+<!-- ═══ SECTION 6 ═══ -->
+<div class="section" id="hours">
+  <div class="tag ta">Section 6</div>
+  <h1>Volunteer Hours System</h1>
+
+  <h2>What Counts as Loggable Hours</h2>
+  <div class="grid2">
+    <div class="card good">
+      <h3>✅ Log These</h3>
+      <ul>
+        <li>Workshop facilitation</li>
+        <li>Workshop preparation (slides, materials)</li>
+        <li>Outreach (research, writing emails, follow-up)</li>
+        <li>Social media content creation for the org</li>
+        <li>Volunteer training and management</li>
+        <li>Administrative work (tracking, reports)</li>
+        <li>Attending relevant planning meetings</li>
+      </ul>
+    </div>
+    <div class="card bad">
+      <h3>❌ Don't Log These</h3>
+      <ul>
+        <li>Casual conversation about the org</li>
+        <li>Planning sessions with no documented outcome</li>
+        <li>Anything you can't describe specifically</li>
+        <li>Personal social media use</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>Tracking System (Google Sheets)</h2>
+  <div class="card">
+    <h3>Column Headers</h3>
+    <p><strong>Date · Activity Description · Hours · Location · Verified By · Notes</strong></p>
+    <p style="margin-top:8px;font-size:12.5px;color:var(--t3)">Example row: May 14 | Facilitated "AI or Human" workshop | 2.5 hrs | [Library Name] | [Adult Advisor] | 28 students attended, activity went well</p>
+    <p style="margin-top:8px;font-size:12.5px">Have your adult advisor sign the sheet monthly. Keep the doc shared with your advisor at all times.</p>
+  </div>
+
+  <h2>Verification Letter Template</h2>
+  <div class="template">
+    <div class="tpl-label">📄 Volunteer Verification Letter</div>
+    <button class="copy-btn" onclick="copyTpl(this)">Copy</button>
+    <pre>
+[ORG NAME] | [Website] | [Email]
+
+[Date]
+
+To Whom It May Concern,
+
+This letter confirms that [Student Name] has volunteered with [Org Name], a student-led nonprofit providing free AI literacy education to youth, during the period of [Start Date] through [End Date].
+
+[Student Name] served as [Workshop Facilitator / Programs Coordinator / Content Volunteer] and contributed [X] documented hours of service during this period. Activities included [brief description: facilitating workshops, developing curriculum, outreach coordination, etc.].
+
+[Org Name] delivers free, interactive AI literacy workshops to middle school students across [City/Region]. All programming is student-designed and student-led under adult supervision.
+
+Please direct any questions to me directly.
+
+Sincerely,
+
+[Adult Advisor Full Name]
+[Professional Title and Affiliation]
+Adult Advisor, [Org Name]
+[Email] | [Phone]
+    </pre>
+  </div>
+
+  <div class="honest">
+    <div class="hl">💡 Important: Who Can Sign This Letter</div>
+    <p>Any adult who has observed your work can sign. A teacher, parent, school counselor, or library staff member all count. Once Hack Club Bank approves you, their official documentation and entity status makes the verification even stronger for scholarships and college applications.</p>
+  </div>
+</div>
+
+<!-- ═══ SECTION 7 ═══ -->
+<div class="section" id="legal">
+  <div class="tag tr">Section 7</div>
+  <h1>Legal + Structure<br>(Simplified)</h1>
+
+  <div class="grid2">
+    <div class="card good">
+      <h3>✅ Do Before July</h3>
+      <ul>
+        <li>Secure an adult advisor (Week 1 — most urgent)</li>
+        <li>Apply to Hack Club Bank (Week 2)</li>
+        <li>Write a simple cofounder agreement in Google Docs</li>
+        <li>Set up volunteer hours log</li>
+        <li>Create org Gmail and separate all org activity from personal accounts</li>
+      </ul>
+    </div>
+    <div class="card bad">
+      <h3>❌ Don't Do Before July</h3>
+      <ul>
+        <li>Apply for 501(c)(3) — 6–12 months, $275–600 in fees, requires a board</li>
+        <li>Form an LLC — wrong structure for nonprofits</li>
+        <li>Hire a lawyer — not needed yet, not affordable</li>
+        <li>Open a private bank account — use Hack Club Bank instead</li>
+        <li>Buy a domain or pay for anything — free tools only for now</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>Your Most Important Legal Step: Hack Club Bank</h2>
+  <div class="verdict">
+    <div class="vl">✅ Top Recommendation — Do This in Week 2</div>
+    <p><strong>Hack Club Bank (hcb.hackclub.com)</strong> is free fiscal sponsorship specifically for student-led tech and education organizations. This is your legal structure until you're ready to file for 501(c)(3).</p>
+    <p><strong>What you get:</strong> A legal entity to receive donations, a real FDIC-insured bank account, tax-deductible donation status under Hack Club's existing 501(c)(3), a debit card for expenses, and a transparent public financial ledger. All free, no upfront cost.</p>
+    <p><strong>Apply at: hcb.hackclub.com/apply</strong> — they review applications and accept early-stage student orgs. Be honest that you're just launching. Timeline: 2–4 weeks.</p>
+  </div>
+
+  <h2>How to Get an Adult Advisor</h2>
+  <p>This is your most urgent need. Without it, you can't get into schools, sign verification letters, or use Hack Club Bank. Target: a teacher, parent, school counselor, or professional family friend.</p>
+  <div class="template">
+    <div class="tpl-label">💬 Script to Ask Someone to Be Your Adult Advisor</div>
+    <button class="copy-btn" onclick="copyTpl(this)">Copy</button>
+    <pre>"[Name], I'm building something real with a friend — a student-led nonprofit that teaches middle schoolers about AI. We're already reaching out to schools and we're serious about making it happen. We need an adult advisor — someone who can sign volunteer verification letters and be available for occasional questions. It's probably 1–2 hours a month. You wouldn't be running anything, just supervising. Would you be willing to do that for us?"</pre>
+  </div>
+
+  <h2>501(c)(3): When to Apply</h2>
+  <p>Apply in <strong>Year 2</strong>, after you have documented workshops, a track record of students reached, consistent volunteers, and ideally a board of 3–5 adults. By then your application is materially stronger and the $275–600 filing fee is more justifiable. Hack Club Bank's 501(c)(3) covers you completely in the meantime.</p>
+
+  <h2>Simple Cofounder Agreement (No Lawyer Needed)</h2>
+  <p>Write this as a Google Doc. Both sign electronically (or just type your names). Cover: roles and responsibilities, how decisions are made, what happens if one person leaves or goes inactive, how public credit is shared. This protects your friendship and prevents conflicts before they happen.</p>
+</div>
+
+<!-- ═══ SECTION 8 ═══ -->
+<div class="section" id="scale">
+  <div class="tag tp">Section 8</div>
+  <h1>Scale Plan → 10,000 Students</h1>
+
+  <div class="phases">
+    <div class="phase">
+      <div class="pt">Months 1–3<small>May–July 2026</small></div>
+      <div>
+        <div class="pg">Target: 150–250 students reached</div>
+        <ul>
+          <li>Run 5–8 workshops (libraries first, then schools)</li>
+          <li>Document everything: photos, student count, quotes, post-its</li>
+          <li>Recruit 2–3 consistent volunteer helpers</li>
+          <li>Build TikTok to 200+ followers</li>
+          <li>Write your first impact report (1 page, shareable)</li>
+        </ul>
+      </div>
+    </div>
+    <div class="phase">
+      <div class="pt">Months 4–6<small>Aug–Oct 2026</small></div>
+      <div>
+        <div class="pg">Target: 500+ students, ~1 workshop per week</div>
+        <ul>
+          <li>Create a Facilitator Guide — a document that lets others run your workshop</li>
+          <li>Train 2–3 additional volunteer facilitators using it</li>
+          <li>Add online Zoom workshops — recruit via TikTok for national reach</li>
+          <li>Apply to 2–3 local youth program grants (Google "youth education grants [city]")</li>
+        </ul>
+      </div>
+    </div>
+    <div class="phase">
+      <div class="pt">Months 7–12<small>Nov 2026–Apr 2027</small></div>
+      <div>
+        <div class="pg">Target: 2,000 students reached</div>
+        <ul>
+          <li>Create a "Workshop Host Kit" — trained volunteers run sessions independently</li>
+          <li>Partner with existing school tech, STEM, and leadership clubs</li>
+          <li>Launch online cohort model — recurring sessions with the same group over 4 weeks</li>
+          <li>Begin 501(c)(3) filing process</li>
+        </ul>
+      </div>
+    </div>
+    <div class="phase">
+      <div class="pt">Year 2<small>2027–2028</small></div>
+      <div>
+        <div class="pg">Target: 10,000 students — via the School Club Model</div>
+        <ul>
+          <li><strong>The unlock:</strong> One workshop = 30 students once. One school club = 30 students every month, indefinitely.</li>
+          <li>Train student leaders at partner schools to run their own ongoing AI clubs</li>
+          <li>Target: 20 active school clubs × ~500 students/year = 10,000 by early 2028</li>
+          <li>Support clubs with curriculum updates, facilitator community, and org branding</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <h2>How to Recruit Volunteers</h2>
+  <ul>
+    <li><strong>TikTok CTA:</strong> "Want to help us teach the next generation about AI? DM us." — works surprisingly well once you have any following</li>
+    <li><strong>End of every workshop:</strong> "Is anyone here interested in helping us run future workshops?" — motivated students are your best source</li>
+    <li><strong>School service clubs:</strong> Key Club, National Honor Society, leadership club — they need documented hours, you need bodies</li>
+    <li><strong>College students:</strong> Once you have credibility, reach out to local university education and CS programs — many want service opportunities</li>
+  </ul>
+</div>
+
+<!-- ═══ SECTION 9 ═══ -->
+<div class="section" id="cofounders">
+  <div class="tag tc">Section 9</div>
+  <h1>Cofounder System</h1>
+
+  <div class="roles">
+    <div class="role">
+      <h3 style="color:var(--cyan)">Person 1: Programs Director</h3>
+      <div class="sub">Owns everything that happens in the real world</div>
+      <ul>
+        <li>Workshop content, materials, activities</li>
+        <li>School and library partnerships</li>
+        <li>Volunteer training and day-of management</li>
+        <li>Impact tracking (students reached, hours logged)</li>
+        <li>Day-of execution for all workshops</li>
+      </ul>
+      <div class="not">Not responsible for: social media, cold outreach, finances</div>
+    </div>
+    <div class="role">
+      <h3 style="color:var(--purple)">Person 2: Growth Director</h3>
+      <div class="sub">Owns everything that gets people to show up</div>
+      <ul>
+        <li>TikTok + Instagram (posting, replying, growing)</li>
+        <li>Cold outreach emails to schools + libraries</li>
+        <li>Website, one-pager, and materials updates</li>
+        <li>Sponsor and partner relationships</li>
+        <li>Financial tracking on Hack Club Bank</li>
+      </ul>
+      <div class="not">Not responsible for: workshop content, facilitation, volunteer training</div>
+    </div>
+  </div>
+
+  <h2>Decision-Making System</h2>
+  <div class="card">
+    <ul>
+      <li><strong>Decisions within your own domain:</strong> Just make it. Tell the other person after. No vote needed. This is what prevents bottlenecks.</li>
+      <li><strong>Cross-domain decisions or anything over $50:</strong> Both agree within 48 hours. State your case in a voice note or short text — clear, reasoned, brief.</li>
+      <li><strong>Genuinely stuck?</strong> Low-stakes: flip a coin and commit. High-stakes: 15-minute call with your adult advisor for a third perspective.</li>
+      <li><strong>The rule:</strong> "We'll decide together" cannot be used as an excuse to delay any decision more than 48 hours. Stalling kills nonprofit momentum faster than wrong decisions do.</li>
+    </ul>
+  </div>
+
+  <h2>Weekly Workflow</h2>
+  <ul>
+    <li><strong>Every Sunday, 30 minutes:</strong> What got done? What's blocked? Top 3 priorities each person owns this week.</li>
+    <li><strong>Shared Notion board:</strong> Three columns — To Do | In Progress | Done. Every task has one named owner, never "both of us."</li>
+    <li><strong>Shared Google Calendar:</strong> All workshop dates, outreach deadlines, posting days, and the Sunday check-in itself</li>
+    <li><strong>The rule:</strong> If a task doesn't have a single named owner, it doesn't get done. Assign everything.</li>
+  </ul>
+</div>
+
+<!-- ═══ SECTION 10 ═══ -->
+<div class="section" id="action">
+  <div class="tag ta">Section 10 — Start Now</div>
+  <h1>Your 48-Hour Action Plan</h1>
+  <p>Do these in order. Don't skip steps. Don't reorder based on preference. The order matters.</p>
+
+  <div class="ab">
+    <div class="tl">Hour 0–2</div>
+    <h3>Infrastructure — Build your home base</h3>
+    <ul class="cl">
+      <li><span class="cb"></span><span class="pri pc">CRITICAL</span>Create shared org Gmail right now (e.g. sparkailearn@gmail.com)</li>
+      <li><span class="cb"></span><span class="pri pc">CRITICAL</span>Create shared Google Drive — 4 folders: Outreach / Workshop / Finance / Media</li>
+      <li><span class="cb"></span><span class="pri ph">HIGH</span>Create free Notion account — set up "Master Tracker" with task board</li>
+      <li><span class="cb"></span><span class="pri ph">HIGH</span>Claim TikTok and Instagram @[orgname] — do this before someone else does</li>
+    </ul>
+  </div>
+
+  <div class="ab">
+    <div class="tl">Hour 2–6</div>
+    <h3>People — Find your advisor + build your contact list</h3>
+    <ul class="cl">
+      <li><span class="cb"></span><span class="pri pc">CRITICAL</span>Text or email 3 potential adult advisors TODAY — use the script from Section 7</li>
+      <li><span class="cb"></span><span class="pri ph">HIGH</span>Spend 1 hour finding 20 middle school principal emails near you</li>
+      <li><span class="cb"></span><span class="pri ph">HIGH</span>Find 10 library or community center youth program contacts</li>
+    </ul>
+  </div>
+
+  <div class="ab">
+    <div class="tl">Hour 6–12</div>
+    <h3>Content — Put something into the world</h3>
+    <ul class="cl">
+      <li><span class="cb"></span><span class="pri pc">CRITICAL</span>Write your 1-sentence mission statement — use Section 1 template, don't overthink it</li>
+      <li><span class="cb"></span><span class="pri pc">CRITICAL</span>Film TikTok #1 — introduce yourselves and your mission, 30–45 seconds, raw is fine, post it today</li>
+      <li><span class="cb"></span><span class="pri ph">HIGH</span>Start your Canva one-pager — pick a clean free template, add org name + mission + workshop overview</li>
+    </ul>
+  </div>
+
+  <div class="ab">
+    <div class="tl">Hour 12–24</div>
+    <h3>Outreach — Start the clock on getting a yes</h3>
+    <ul class="cl">
+      <li><span class="cb"></span><span class="pri pc">CRITICAL</span>Send your first 5 principal emails using the template from Section 4</li>
+      <li><span class="cb"></span><span class="pri pc">CRITICAL</span>Apply to Hack Club Bank — hcb.hackclub.com/apply</li>
+      <li><span class="cb"></span><span class="pri ph">HIGH</span>DM 3 educators on TikTok/Instagram who post about education or youth tech</li>
+    </ul>
+  </div>
+
+  <div class="ab">
+    <div class="tl">Hour 24–48</div>
+    <h3>Build — Lay the program foundation</h3>
+    <ul class="cl">
+      <li><span class="cb"></span><span class="pri pc">CRITICAL</span>Create the 12-slide skeleton in Google Slides (slide titles only, no content yet)</li>
+      <li><span class="cb"></span><span class="pri ph">HIGH</span>Send 10 more outreach emails (mix of schools and libraries)</li>
+      <li><span class="cb"></span><span class="pri ph">HIGH</span>Film TikTok #2: "Why we're building this" — your 30-second origin story</li>
+      <li><span class="cb"></span><span class="pri pm">MED</span>Schedule the weekly Sunday cofounder check-in on both your calendars — right now</li>
+    </ul>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- ═══ BONUS ═══ -->
+<div class="section" id="brand">
+  <div class="tag tp">Bonus Section</div>
+  <h1>Name + Branding + Web Presence</h1>
+
+  <h2>Name Ideas</h2>
+  <div class="name-grid">
+    <div class="nc rec">
+      <div class="rb">⭐ RECOMMENDED</div>
+      <div class="on">Spark AI</div>
+      <div class="tl2">"Lighting the way in an AI world"</div>
+      <div class="info">Clean, energetic, memorable. @sparkailearn works on TikTok. Sounds like a real org from day one.</div>
+    </div>
+    <div class="nc">
+      <div class="on">Amplify AI</div>
+      <div class="tl2">"Amplifying the next generation"</div>
+      <div class="info">Double meaning: amplifying student potential + AI amplification. Strong and memorable.</div>
+    </div>
+    <div class="nc">
+      <div class="on">FutureLead</div>
+      <div class="tl2">"Where leadership meets tomorrow"</div>
+      <div class="info">Signals mission clearly. Great for school pitch decks and grant applications.</div>
+    </div>
+    <div class="nc">
+      <div class="on">Telos AI</div>
+      <div class="tl2">"Purpose-driven AI education"</div>
+      <div class="info">Telos = Greek for "purpose." Sophisticated, unique, and memorable once you explain it.</div>
+    </div>
+    <div class="nc">
+      <div class="on">Luminary AI</div>
+      <div class="tl2">"Illuminating AI for young minds"</div>
+      <div class="info">Premium feel. Strong for scholarships and grant applications.</div>
+    </div>
+    <div class="nc">
+      <div class="on">NextGen AI</div>
+      <div class="tl2">"AI literacy for tomorrow's leaders"</div>
+      <div class="info">Generic but immediately clear. Good if descriptive beats clever for your audience.</div>
+    </div>
+  </div>
+
+  <h2>How to Look Credible Fast</h2>
+  <ul>
+    <li><strong>Professional org email on every outreach</strong> — not your personal Gmail</li>
+    <li><strong>Canva one-pager attached to every email</strong> — this alone increases response rates materially</li>
+    <li><strong>Post your first TikTok before you're ready</strong> — raw authenticity performs better than polished production in this niche, and early content shows momentum</li>
+    <li><strong>Get a testimonial quote as fast as possible</strong> — even "I'm looking forward to hosting [Org Name]" from a librarian counts. Use it everywhere.</li>
+    <li><strong>Update your bio the moment a number is true</strong> — "50+ students reached" the day it's true. Don't wait.</li>
+    <li><strong>Good lighting in workshop photos</strong> — natural light, genuine engagement, no stiff poses. This becomes your thumbnail on everything.</li>
+    <li><strong>Org letterhead in Google Docs</strong> — 30 minutes to set up, use on every official communication</li>
+  </ul>
+
+  <h2>Simple Website: Carrd.co (Free, 2–3 Hours)</h2>
+  <div class="card">
+    <p>Use <strong>Carrd.co</strong> — not Wix, not Squarespace, not Webflow. Carrd is free, visually clean, and takes 2–3 hours. Add a custom domain later for $19/year on Namecheap once you're ready.</p>
+    <h3 style="color:var(--t1);margin-top:14px">5-Section Structure</h3>
+    <ul>
+      <li><strong>Hero:</strong> Big headline, 1-line mission, single CTA button: "Bring a Workshop to Your School"</li>
+      <li><strong>About:</strong> Who you are, your photo, 2–3 sentences on why you built this</li>
+      <li><strong>Program:</strong> One paragraph on the workshop — what it is, who it's for, how to book</li>
+      <li><strong>Impact:</strong> A counter — "X students reached across Y workshops." Update this manually every time. Start at 0 and be proud as it grows.</li>
+      <li><strong>Contact:</strong> Simple form (Carrd supports this on free tier)</li>
+    </ul>
+    <p style="margin-top:14px;font-size:12.5px;color:var(--amber)">⚠️ Don't build the website in Week 1. Build it in Week 3, after you have a confirmed name, org email, and one-pager. Outreach first. Everything else second.</p>
+  </div>
+
+  <h2>Linktree (Free) — Use This Until Your Site Is Ready</h2>
+  <p>Set up a free Linktree with links to: Workshop booking (Calendly free) · Instagram · TikTok · Contact email · One-pager PDF (Google Drive shared link). Put your Linktree URL in every TikTok bio and email signature starting Day 1.</p>
+
+  <hr class="divider">
+
+  <div class="honest">
+    <div class="hl">📌 The One Thing That Kills Student Nonprofits</div>
+    <p>It's not lack of funding, lack of connections, or being too young. It's the gap between planning and doing. You now have a complete playbook. The organizations that fail spend months perfecting the name, the logo, and the website. The ones that succeed send 5 emails today and post their first TikTok before they're ready.</p>
+    <p><strong>Send the first email before you close this tab.</strong></p>
+  </div>
+</div>
+
+</main>
+
+<script>
+function copyTpl(btn) {
+  const pre = btn.parentElement.querySelector('pre');
+  if (!pre) return;
+  navigator.clipboard.writeText(pre.innerText.trim()).then(() => {
+    const orig = btn.textContent;
+    btn.textContent = 'Copied ✓';
+    setTimeout(() => btn.textContent = orig, 2000);
+  });
+}
+const sections = document.querySelectorAll('.section');
+const navLinks = document.querySelectorAll('.sidebar a');
+window.addEventListener('scroll', () => {
+  let cur = '';
+  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 120) cur = s.id; });
+  navLinks.forEach(a => {
+    a.classList.remove('active');
+    if (a.getAttribute('href') === '#' + cur) a.classList.add('active');
+  });
+});
+</script>
+</body>
+</html>
